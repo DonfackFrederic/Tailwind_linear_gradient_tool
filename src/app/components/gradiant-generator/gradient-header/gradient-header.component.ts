@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GradientHeaderConfig } from '../../../models/gradient-generatotr/gradient-header-config';
 import { NgClass } from '@angular/common';
 
@@ -11,11 +11,15 @@ import { NgClass } from '@angular/common';
   templateUrl: './gradient-header.component.html',
   styleUrl: './gradient-header.component.css'
 })
-export class GradientHeaderComponent {
+export class GradientHeaderComponent implements OnInit {
 
   gradientHeaderConfig = new GradientHeaderConfig('bg','custum');
   @Output() gradientHeaderConfigEmitter : EventEmitter<GradientHeaderConfig> = new EventEmitter()
 
+
+  ngOnInit(): void {
+    this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
+  }
   setToolName(toolName:'bg'|'text') {
     this.gradientHeaderConfig.toolName = toolName;
     this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
