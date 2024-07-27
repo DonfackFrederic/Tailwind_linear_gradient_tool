@@ -1,12 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { GradientHeaderConfig } from '../../../models/gradient-generatotr/gradient-header-config';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-gradient-header',
   standalone: true,
-  imports: [],
+  imports: [
+    NgClass
+  ],
   templateUrl: './gradient-header.component.html',
   styleUrl: './gradient-header.component.css'
 })
 export class GradientHeaderComponent {
-  
+
+  gradientHeaderConfig = new GradientHeaderConfig('bg','custum');
+  @Output() gradientHeaderConfigEmitter : EventEmitter<GradientHeaderConfig> = new EventEmitter()
+
+  setToolName(toolName:'bg'|'text') {
+    this.gradientHeaderConfig.toolName = toolName;
+    this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
+  }
+  setToolOption(toolOption:'custum'|'random'|'ready') {
+    this.gradientHeaderConfig.toolOption = toolOption;
+    this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
+  }
+
+  getActifTool(value: 'bg'|'text'){
+    return this.gradientHeaderConfig.toolName == value;
+  }
+
+  getActifOption(value:'custum'|'random'|'ready'){
+    return this.gradientHeaderConfig.toolOption == value;
+  }
+
 }

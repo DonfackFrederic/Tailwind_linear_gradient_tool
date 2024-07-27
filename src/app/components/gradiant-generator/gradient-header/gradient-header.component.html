@@ -12,40 +12,57 @@
     <!-- header control for service -->
     <div class="">
       <div class="flex justify-center space-x-1">
-          <label for="background" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
+        
+        <div (click)="setToolName('bg')" for="background" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
+          <span>
             Background
-            <input type="radio" class="hidden" name="services" id="background" checked="">
-          </label>
-          <label for="text" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
+            <input type="radio" class="hidden"  name="services" id="background" [checked]="getActifTool('bg')">
+          </span>
+        </div>
+
+        <div (click)="setToolName('text')" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
+          <span>
             Text
-            <input type="radio" class="hidden" name="services" id="text">
-          </label>
+            <input type="radio" class="hidden" name="services" id="text" [checked]="getActifTool('text')">
+          </span>
+        </div>
+
       </div>
     </div>
 
     <!-- divider -->
-    <div class="mx-4 h-0.5 bg-gradient-to-r from-emerald-500 to-emerald-900"></div>
+    <div class="mx-4 h-0.5 bg-gradient-to-r from-slate-700 to-blue-600"></div>
 
     <!-- header control for service option -->
     <div class="">
       <div class="flex justify-center space-x-1">
-          <label for="custum" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
+
+        <div (click)="setToolOption('custum')" for="custum" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
+          <span>
             Custum
-            <input type="radio" class="hidden" name="service-option" id="custum" checked="">
-          </label>
-          <label for="random" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
+            <input type="radio" class="hidden" name="service-option" id="custum" [checked]="getActifOption('custum')">
+          </span>
+        </div>
+
+        <div (click)="setToolOption('random')" for="random" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
+          <span>
             Random
-            <input type="radio" class="hidden" name="service-option" id="random">
-          </label>
-          <label for="ready" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
+            <input type="radio" class="hidden" name="service-option" id="random" [checked]="getActifOption('random')">
+          </span>
+        </div>
+
+        <div (click)="setToolOption('ready')" for="ready" class="cursor-pointer my-2 py-1 w-full hover:bg-slate-300 
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
+          <span>
             Ready
-            <input type="radio"class="hidden"  name="service-option" id="ready">
-          </label>
+            <input type="radio" class="hidden" name="service-option" id="ready" [checked]="getActifOption('ready')">
+          </span>
+        </div>
+
       </div>
     </div>
   </article> 

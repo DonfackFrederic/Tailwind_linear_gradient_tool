@@ -4,6 +4,7 @@ import { GradientCustumComponent } from '../../components/gradiant-generator/gra
 import { GradientSettingsComponent } from '../../components/gradiant-generator/gradient-settings/gradient-settings.component';
 import { GradientRandomComponent } from '../../components/gradiant-generator/gradient-random/gradient-random.component';
 import { GradientReadyComponent } from '../../components/gradiant-generator/gradient-ready/gradient-ready.component';
+import { GradientHeaderConfig } from '../../models/gradient-generatotr/gradient-header-config';
 
 @Component({
   selector: 'app-gradient-generator',
@@ -19,5 +20,10 @@ import { GradientReadyComponent } from '../../components/gradiant-generator/grad
   styleUrl: './gradient-generator.component.css'
 })
 export class GradientGeneratorComponent {
-
+  GradientHeaderConfig! : GradientHeaderConfig;
+  
+  SetGradientHeaderConfig(config: GradientHeaderConfig){
+    this.GradientHeaderConfig = config
+    console.log(this.GradientHeaderConfig)
+  }
 }
