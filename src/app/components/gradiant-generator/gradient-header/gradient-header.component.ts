@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GradientHeaderConfig } from '../../../models/gradient-generatotr/gradient-header-config';
 import { NgClass } from '@angular/common';
 
@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
 })
 export class GradientHeaderComponent implements OnInit {
 
-  gradientHeaderConfig = new GradientHeaderConfig('bg','custum');
+  @Input() gradientHeaderConfig : GradientHeaderConfig
   @Output() gradientHeaderConfigEmitter : EventEmitter<GradientHeaderConfig> = new EventEmitter()
 
 
@@ -29,11 +29,11 @@ export class GradientHeaderComponent implements OnInit {
     this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
   }
 
-  getActifTool(value: 'bg'|'text'){
+  isActifTool(value: 'bg'|'text'){
     return this.gradientHeaderConfig.toolName == value;
   }
 
-  getActifOption(value:'custum'|'random'|'ready'){
+  isActifOption(value:'custum'|'random'|'ready'): boolean{
     return this.gradientHeaderConfig.toolOption == value;
   }
 

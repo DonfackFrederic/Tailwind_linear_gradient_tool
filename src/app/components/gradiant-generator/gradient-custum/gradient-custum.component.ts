@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './gradient-custum.component.css'
 })
 export class GradientCustumComponent {
-
+  FinalClass : string = "bg-gradient-to-r from-fuchia-500 to-cyan-500"
 }

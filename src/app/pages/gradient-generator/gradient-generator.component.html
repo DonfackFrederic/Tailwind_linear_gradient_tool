@@ -1,4 +1,4 @@
-<app-gradient-header (gradientHeaderConfigEmitter)="SetGradientHeaderConfig($event)" />
+<app-gradient-header [gradientHeaderConfig]="gradientHeaderConfig" (gradientHeaderConfigEmitter)="setGradientHeaderConfig($event)" />
 
 <!-- tool option -->
 
@@ -7,7 +7,7 @@
     <div class="mt-10">
 
       <!-- setting-component -->
-      <app-gradient-settings />
+      <app-gradient-settings [gradientSettingConfig]="gradientSettingConfig" (gradientSettingConfigEmitter)="setGradientSettingConfig($event)" />
       <!-- /setting-component -->
 
       <!-- page-title -->

@@ -17,7 +17,7 @@
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
           <span>
             Background
-            <input type="radio" class="hidden"  name="services" id="background" [checked]="getActifTool('bg')">
+            <input type="radio" class="hidden"  name="services" id="background" [checked]="isActifTool('bg')">
           </span>
         </div>
 
@@ -25,7 +25,7 @@
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
           <span>
             Text
-            <input type="radio" class="hidden" name="services" id="text" [checked]="getActifTool('text')">
+            <input type="radio" class="hidden" name="services" id="text" [checked]="isActifTool('text')">
           </span>
         </div>
 
@@ -43,7 +43,7 @@
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
           <span>
             Custum
-            <input type="radio" class="hidden" name="service-option" id="custum" [checked]="getActifOption('custum')">
+            <input type="radio" class="hidden" name="service-option" id="custum" [checked]="isActifOption('custum')">
           </span>
         </div>
 
@@ -51,7 +51,7 @@
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
           <span>
             Random
-            <input type="radio" class="hidden" name="service-option" id="random" [checked]="getActifOption('random')">
+            <input type="radio" class="hidden" name="service-option" id="random" [checked]="isActifOption('random')">
           </span>
         </div>
 
@@ -59,7 +59,7 @@
           inline-block rounded-md has-[:checked]:bg-indigo-600 has-[:checked]:text-white">
           <span>
             Ready
-            <input type="radio" class="hidden" name="service-option" id="ready" [checked]="getActifOption('ready')">
+            <input type="radio" class="hidden" name="service-option" id="ready" [checked]="isActifOption('ready')">
           </span>
         </div>
 
