@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GradientHeaderConfig } from '../../../models/gradient-generatotr/gradient-header-config';
+import { Component} from '@angular/core';
+import { toolName, toolNameResponse, toolOption, toolOptionResponse } from '../../../models/gradient-generatotr/gradient-header-config';
 import { NgClass } from '@angular/common';
+import { GradientGenaratorService } from '../../../services/gradient-genarator.service';
 
 @Component({
   selector: 'app-gradient-header',
@@ -11,30 +12,25 @@ import { NgClass } from '@angular/common';
   templateUrl: './gradient-header.component.html',
   styleUrl: './gradient-header.component.css'
 })
-export class GradientHeaderComponent implements OnInit {
+export class GradientHeaderComponent{
 
-  @Input() gradientHeaderConfig : GradientHeaderConfig
-  @Output() gradientHeaderConfigEmitter : EventEmitter<GradientHeaderConfig> = new EventEmitter()
+  constructor(private gradientGeneratorService: GradientGenaratorService){}
 
-
-  ngOnInit(): void {
-    this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
+  setToolName(toolName:  toolName) {
+    this.gradientGeneratorService.setToolName(toolName);
   }
-  setToolName(toolName:'bg'|'text') {
-    this.gradientHeaderConfig.toolName = toolName;
-    this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
-  }
-  setToolOption(toolOption:'custum'|'random'|'ready') {
-    this.gradientHeaderConfig.toolOption = toolOption;
-    this.gradientHeaderConfigEmitter.emit(this.gradientHeaderConfig)
+  setToolOption(toolOption: toolOption) {
+    this.gradientGeneratorService.setToolOption(toolOption);
   }
 
-  isActifTool(value: 'bg'|'text'){
-    return this.gradientHeaderConfig.toolName == value;
+  isActifTool(value: toolName){
+    let toolNameResponse: toolNameResponse = this.gradientGeneratorService.getTooLName()
+    return toolNameResponse.value == value;
   }
 
-  isActifOption(value:'custum'|'random'|'ready'): boolean{
-    return this.gradientHeaderConfig.toolOption == value;
+  isActifOption(value: toolOption): boolean{
+    let toolOptionResponse : toolOptionResponse = this.gradientGeneratorService.getTooLOption()
+    return toolOptionResponse.value == value;
   }
 
 }

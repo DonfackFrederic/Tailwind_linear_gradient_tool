@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './gradient-random.component.css'
 })
 export class GradientRandomComponent {
-
+  
 }

@@ -1,37 +1,49 @@
-<app-gradient-header [gradientHeaderConfig]="gradientHeaderConfig" (gradientHeaderConfigEmitter)="setGradientHeaderConfig($event)" />
+<app-gradient-header />
 
 <!-- tool option -->
+@if (isActiveToolOption('custum')) {
+  <section>
+    <article class="max-w-full mx-3 shadow-sm p-1 sm:mx-auto sm:max-w-xl md:max-w-2xl xl:max-w-6xl my-3">
+      <div class="mt-10">
 
-<section>
-  <article class="max-w-full mx-3 shadow-sm p-1 sm:mx-auto sm:max-w-xl md:max-w-2xl xl:max-w-6xl my-3">
-    <div class="mt-10">
 
-      <!-- setting-component -->
-      <app-gradient-settings [gradientSettingConfig]="gradientSettingConfig" (gradientSettingConfigEmitter)="setGradientSettingConfig($event)" />
-      <!-- /setting-component -->
-
-      <!-- page-title -->
-      <div class="relative mt-12 lg:flex">
-        <div class="w-full lg:w-1/2 xl:w-2/5">
-          <h3 class="text-xl font-semibold text-gray-800">Choose Colors</h3>
-            <p class="max-w-md mt-2 text-gray-500">Pick colors from the Tailwind CSS Palette that fit your design.</p>
-          </div>
-          <div class="w-full mt-4 lg:w-1/2 lg:pl-10 xl:pl-16 xl:w-3/5 lg:mt-0">
-            <div><label class="font-medium text-gray-500">
-              Your Text
-              </label>
-                <input class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
+        <!-- page-title -->
+        <div class="relative mt-12 lg:flex">
+          <div class="w-full lg:w-1/2 xl:w-2/5">
+            <h3 class="text-xl font-semibold text-gray-800">Choose Colors</h3>
+              <p class="max-w-md mt-2 text-gray-500">Pick colors from the Tailwind CSS Palette that fit your design.</p>
+            </div>
+            <div
+            [ngClass]="{'hidden': !isTextToolActive()}"
+            class="w-full mt-4 lg:w-1/2 lg:pl-10 xl:pl-16 xl:w-3/5 lg:mt-0">
+              <div>
+                <label class="font-medium text-gray-500">
+                  Your Text
+                </label>
+                  <input 
+                    [(ngModel)]="UserEntryText"
+                    class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
+              </div>
             </div>
           </div>
-        </div>
-        <!-- /page-title -->
+          <!-- /page-title -->
 
-        <!-- custum-component -->
-        <app-gradient-custum />
-        <!-- /custum-component -->
+          <!-- custum-component -->
+          <app-gradient-custum [userEntryText]="UserEntryText" />
+          <!-- /custum-component -->
 
-      </div>  
-  </article>
-</section>
+          <!-- setting-component -->
+          <app-gradient-settings />
+          <!-- /setting-component -->
 
-<app-gradient-ready />
+        </div>  
+    </article>
+  </section>
+}
+
+@if (isActiveToolOption('random')) {
+  <app-gradient-random />
+}
+@if (isActiveToolOption('ready')) {
+  <app-gradient-ready />
+}

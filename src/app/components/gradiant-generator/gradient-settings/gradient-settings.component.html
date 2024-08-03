@@ -9,7 +9,7 @@
         <label class="font-medium text-gray-500">Via</label>
         <div class="relative w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20" tabindex="0">
           <button (click)="ToggleSpecificDropdown(0)" class="flex items-center justify-between w-full h-full">
-            <div class="flex items-center w-full h-full">{{ gradientSettingConfig.viaOptionValue | titlecase }}</div>
+            <div class="flex items-center w-full h-full">{{ getViaOptionResponse().value| titlecase }}</div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-700"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
           </button>
           <div #viaOptionDropDown class="absolute hidden left-0 z-20 w-full py-2 mt-2 bg-white border border-gray-100 rounded-lg shadow-xl top-12 lg:left-auto lg:right-0">
@@ -22,20 +22,20 @@
         <label class="font-medium text-gray-500">Direction</label>
         <div class="relative w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20" tabindex="0">
           <button (click)="ToggleSpecificDropdown(1)" class="flex items-center justify-between w-full h-full">
-            <div class="flex items-center w-full h-full">{{ gradientSettingConfig.directionOptionValue | titlecase }}</div>
+            <div class="flex items-center w-full h-full">{{ getDirectionResponse().value | optionToFullText | titlecase }}</div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-700">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
             </svg>
           </button>
           <div #directionOptionDropDown class="absolute hidden left-0 z-20 w-full py-2 mt-2 bg-white border border-gray-100 rounded-lg shadow-xl top-12 lg:left-auto lg:right-0">
-            <div (click)="setDirectionOptionValue('to top')" [ngClass]="{'bg-gray-100': isActiveDirection('to top')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Top</div>
-            <div (click)="setDirectionOptionValue('to top right')" [ngClass]="{'bg-gray-100': isActiveDirection('to top right')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Top Right</div>
-            <div (click)="setDirectionOptionValue('to right')" [ngClass]="{'bg-gray-100': isActiveDirection('to right')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Right</div>
-            <div (click)="setDirectionOptionValue('to bottom right')" [ngClass]="{'bg-gray-100': isActiveDirection('to bottom right')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Bottom Right</div>
-            <div (click)="setDirectionOptionValue('to bottom')" [ngClass]="{'bg-gray-100': isActiveDirection('to bottom')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Bottom</div>
-            <div (click)="setDirectionOptionValue('to bottom left')" [ngClass]="{'bg-gray-100': isActiveDirection('to bottom left')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Bottom Left</div>
-            <div (click)="setDirectionOptionValue('to left')" [ngClass]="{'bg-gray-100': isActiveDirection('to left')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Left</div>
-            <div (click)="setDirectionOptionValue('to top left')" [ngClass]="{'bg-gray-100': isActiveDirection('to top left')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Top Left</div>
+            <div (click)="setDirectionOptionValue('to-t')" [ngClass]="{'bg-gray-100': isActiveDirection('to-t')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Top</div>
+            <div (click)="setDirectionOptionValue('to-tr')" [ngClass]="{'bg-gray-100': isActiveDirection('to-tr')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Top Right</div>
+            <div (click)="setDirectionOptionValue('to-r')" [ngClass]="{'bg-gray-100': isActiveDirection('to-r')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Right</div>
+            <div (click)="setDirectionOptionValue('to-br')" [ngClass]="{'bg-gray-100': isActiveDirection('to-br')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Bottom Right</div>
+            <div (click)="setDirectionOptionValue('to-b')" [ngClass]="{'bg-gray-100': isActiveDirection('to-b')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Bottom</div>
+            <div (click)="setDirectionOptionValue('to-bl')" [ngClass]="{'bg-gray-100': isActiveDirection('to-bl')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Bottom Left</div>
+            <div (click)="setDirectionOptionValue('to-l')" [ngClass]="{'bg-gray-100': isActiveDirection('to-l')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Left</div>
+            <div (click)="setDirectionOptionValue('to-tl')" [ngClass]="{'bg-gray-100': isActiveDirection('to-tl')}" class="px-4 py-3 cursor-pointer hover:bg-gray-50">To Top Left</div>
           </div>
         </div>
       </div>

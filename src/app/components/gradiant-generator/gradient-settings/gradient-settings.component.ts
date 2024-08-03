@@ -1,53 +1,57 @@
 import { NgClass, TitleCasePipe } from '@angular/common';
-import {Component, ViewChildren, ElementRef, QueryList, Input, EventEmitter, Output, OnInit } from '@angular/core';
-import { GradientSettingConfig } from '../../../models/gradient-generatotr/gradient-setting-config';
+import {Component, ViewChildren, ElementRef, QueryList} from '@angular/core';
+import { direcrionOption, directionOptionResponse, viaOption, viaOptionResponse } from '../../../models/gradient-generatotr/gradient-setting-config';
+import { GradientGenaratorService } from '../../../services/gradient-genarator.service';
+import { OptionToFullTextPipe } from '../../../pipes/option-to-full-text.pipe';
 
 @Component({
   selector: 'app-gradient-settings',
   standalone: true,
   imports: [
     TitleCasePipe,
-    NgClass
+    NgClass,
+    OptionToFullTextPipe
   ],
   templateUrl: './gradient-settings.component.html',
   styleUrl: './gradient-settings.component.css'
 })
-export class GradientSettingsComponent implements OnInit { 
+export class GradientSettingsComponent{
 
-  @Input() gradientSettingConfig:GradientSettingConfig
-  @Output() gradientSettingConfigEmitter: EventEmitter<GradientSettingConfig> = new EventEmitter()
+  constructor(private gradientGeneratorService: GradientGenaratorService){}
+
   @ViewChildren('viaOptionDropDown , directionOptionDropDown') dropdownOptionList : QueryList<ElementRef>;
 
-  ngOnInit(): void {
-    this.gradientSettingConfigEmitter.emit(this.gradientSettingConfig)
+  getViaOptionResponse(): viaOptionResponse{
+    return this.gradientGeneratorService.getViaOptionValue();
   }
-
+  getDirectionResponse(): directionOptionResponse{
+    return this.gradientGeneratorService.getDirectionOptionValue();
+  }
   // toggle dropdown viaOptionDropdown and directionOptionDropdown
-  // Angular is riding template by up to down, ViaOption is comming first n DOM and
-  // 
+  // Angular is riding template by up to down, ViaOption is comming first in DOM and
   // in that case directionOptionMenu is the second
 
   ToggleSpecificDropdown(position: 0|1): void{
     this.dropdownOptionList.get(position)?.nativeElement.classList.toggle('hidden')
   }
 
-  setViaOptionValue(value: string){
-    this.gradientSettingConfig.viaOptionValue = value;
-    this.gradientSettingConfigEmitter.emit(this.gradientSettingConfig)
+  setViaOptionValue(value: viaOption){
+    this.gradientGeneratorService.setViaOptionValue(value);
     this.ToggleSpecificDropdown(0);
   }
-  setDirectionOptionValue(value: string){
-    this.gradientSettingConfig.directionOptionValue = value;
-    this.gradientSettingConfigEmitter.emit(this.gradientSettingConfig)
+  setDirectionOptionValue(value: direcrionOption){
+    this.gradientGeneratorService.setDirectionOptionValue(value);
     this.ToggleSpecificDropdown(1);
   }
 
-  isActiveViaOption(value: string): boolean{
-    return this.gradientSettingConfig.viaOptionValue == value;
+  isActiveViaOption(value: viaOption): boolean{
+    let viaOptionResponse : viaOptionResponse = this.gradientGeneratorService.getViaOptionValue()
+    return viaOptionResponse.value == value;
   }
 
-  isActiveDirection(value: string): boolean{
-    return this.gradientSettingConfig.directionOptionValue == value;
+  isActiveDirection(value: direcrionOption): boolean{
+    let directionOptionResponse : directionOptionResponse = this.gradientGeneratorService.getDirectionOptionValue()
+    return directionOptionResponse.value == value;
   }
 
 }

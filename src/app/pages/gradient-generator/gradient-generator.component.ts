@@ -4,8 +4,10 @@ import { GradientCustumComponent } from '../../components/gradiant-generator/gra
 import { GradientSettingsComponent } from '../../components/gradiant-generator/gradient-settings/gradient-settings.component';
 import { GradientRandomComponent } from '../../components/gradiant-generator/gradient-random/gradient-random.component';
 import { GradientReadyComponent } from '../../components/gradiant-generator/gradient-ready/gradient-ready.component';
-import { GradientHeaderConfig } from '../../models/gradient-generatotr/gradient-header-config';
-import { GradientSettingConfig } from '../../models/gradient-generatotr/gradient-setting-config';
+import { FormsModule } from '@angular/forms';
+import { GradientGenaratorService } from '../../services/gradient-genarator.service';
+import { NgClass } from '@angular/common';
+import { toolOption } from '../../models/gradient-generatotr/gradient-header-config';
 
 @Component({
   selector: 'app-gradient-generator',
@@ -15,22 +17,25 @@ import { GradientSettingConfig } from '../../models/gradient-generatotr/gradient
     GradientSettingsComponent,
     GradientRandomComponent,
     GradientCustumComponent,
-    GradientReadyComponent
+    GradientReadyComponent,
+    FormsModule,
+    NgClass
   ],
   templateUrl: './gradient-generator.component.html',
   styleUrl: './gradient-generator.component.css'
 })
 export class GradientGeneratorComponent {
-  gradientHeaderConfig = new GradientHeaderConfig('bg','custum');
-  gradientSettingConfig  = new GradientSettingConfig('inactive', 'to right');
+  constructor(private gradientGeneratorService: GradientGenaratorService){}
 
-  setGradientHeaderConfig(config: GradientHeaderConfig){
-    this.gradientHeaderConfig = config
-    console.log(this.gradientHeaderConfig)
+  UserEntryText : string = "Awesome Gradient";
+
+  isTextToolActive(){
+    let activeTool = this.gradientGeneratorService.getTooLName()
+    return activeTool.value == 'text';
   }
 
-  setGradientSettingConfig(config: GradientSettingConfig){
-    this.gradientSettingConfig = config
-    console.log(this.gradientSettingConfig)
+  isActiveToolOption(option: toolOption){
+    let toolOption = this.gradientGeneratorService.getTooLOption();
+    return toolOption.value == option;
   }
 }
