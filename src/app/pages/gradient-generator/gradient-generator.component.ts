@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { GradientHeaderComponent } from '../../components/gradiant-generator/gradient-header/gradient-header.component';
-import { GradientCustumComponent } from '../../components/gradiant-generator/gradient-custum/gradient-custum.component';
-import { GradientSettingsComponent } from '../../components/gradiant-generator/gradient-settings/gradient-settings.component';
-import { GradientRandomComponent } from '../../components/gradiant-generator/gradient-random/gradient-random.component';
-import { GradientReadyComponent } from '../../components/gradiant-generator/gradient-ready/gradient-ready.component';
 import { FormsModule } from '@angular/forms';
-import { GradientGenaratorService } from '../../services/gradient-genarator.service';
+import { GradientSettingsComponent } from './components/gradient-settings/gradient-settings.component';
 import { NgClass } from '@angular/common';
-import { toolOption } from '../../models/gradient-generatotr/gradient-header-config';
+import { GradientCustumComponent } from './components/gradient-custum/gradient-custum.component';
+import { GradientHeaderComponent } from './components/gradient-header/gradient-header.component';
+import { GradientRandomComponent } from './components/gradient-random/gradient-random.component';
+import { GradientReadyComponent } from './components/gradient-ready/gradient-ready.component';
+import { toolOption } from './models/gradient-header-config';
+import { GradientGenaratorService } from './services/gradient-genarator.service';
 
 @Component({
   selector: 'app-gradient-generator',

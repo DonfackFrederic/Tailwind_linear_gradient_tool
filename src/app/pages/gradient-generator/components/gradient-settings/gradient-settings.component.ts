@@ -1,8 +1,8 @@
 import { NgClass, TitleCasePipe } from '@angular/common';
-import {Component, ViewChildren, ElementRef, QueryList} from '@angular/core';
-import { direcrionOption, directionOptionResponse, viaOption, viaOptionResponse } from '../../../models/gradient-generatotr/gradient-setting-config';
-import { GradientGenaratorService } from '../../../services/gradient-genarator.service';
-import { OptionToFullTextPipe } from '../../../pipes/option-to-full-text.pipe';
+import {Component, ViewChildren, ElementRef, QueryList, inject} from '@angular/core';
+import { OptionToFullTextPipe } from './pipes/option-to-full-text.pipe';
+import { viaOptionResponse, directionOptionResponse, viaOption, direcrionOption } from '../../models/gradient-setting-config';
+import { GradientGenaratorService } from '../../services/gradient-genarator.service';
 
 @Component({
   selector: 'app-gradient-settings',
@@ -15,9 +15,10 @@ import { OptionToFullTextPipe } from '../../../pipes/option-to-full-text.pipe';
   templateUrl: './gradient-settings.component.html',
   styleUrl: './gradient-settings.component.css'
 })
+
 export class GradientSettingsComponent{
 
-  constructor(private gradientGeneratorService: GradientGenaratorService){}
+  constructor (private gradientGeneratorService : GradientGenaratorService){}
 
   @ViewChildren('viaOptionDropDown , directionOptionDropDown') dropdownOptionList : QueryList<ElementRef>;
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { GradientHeaderConfig, toolName, toolNameResponse, toolOption, toolOptionResponse } from '../models/gradient-generatotr/gradient-header-config';
-import { GradientSettingConfig, classResponse, color, custumColorOption, custumColorOptionResponse, direcrionOption, directionOptionResponse, selectedColorPalette, viaOption, viaOptionResponse } from '../models/gradient-generatotr/gradient-setting-config';
+import { GradientHeaderConfig, toolName, toolNameResponse, toolOption, toolOptionResponse } from '../models/gradient-header-config';
+import { GradientSettingConfig, classResponse, viaOption, viaOptionResponse, direcrionOption, directionOptionResponse, custumColorOption, custumColorOptionResponse, color } from '../models/gradient-setting-config';
 
 @Injectable({
   providedIn: 'root'

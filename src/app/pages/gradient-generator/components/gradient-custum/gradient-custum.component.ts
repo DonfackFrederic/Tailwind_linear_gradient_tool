@@ -1,8 +1,9 @@
 import { NgClass, NgFor, TitleCasePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { GradientGenaratorService } from '../../../services/gradient-genarator.service';
-import { classResponse, color, custumColorOption, custumColorOptionResponse } from '../../../models/gradient-generatotr/gradient-setting-config';
-import { toolName, toolNameResponse } from '../../../models/gradient-generatotr/gradient-header-config';
+import { toolName, toolNameResponse } from '../../models/gradient-header-config';
+import { custumColorOption, custumColorOptionResponse, classResponse, color } from '../../models/gradient-setting-config';
+import { GradientGenaratorService } from '../../services/gradient-genarator.service';
+
 
 @Component({
   selector: 'app-gradient-custum',
@@ -21,6 +22,7 @@ export class GradientCustumComponent {
 
   colorList = this.gradientGeneratorService.getColorList();
   @Input() userEntryText!: string;
+  TextForCopyButtun : string = 'Copy';
 
   
 
@@ -73,9 +75,26 @@ export class GradientCustumComponent {
     return toolNameResponse.value == value;
   }
 
+  copieClass(texteACopier: string) {
+
+    const element = document.createElement('textarea');
+    element.value = texteACopier;
+
+    document.body.appendChild(element);
+
+    element.select();
+    document.execCommand('copy');
+
+    document.body.removeChild(element);
+    this.TextForCopyButtun = 'Copied';
+    setTimeout(() => {
+      this.TextForCopyButtun = 'Copy'
+    }, 1000);
+  }
+
   getSupClassForTextTool(): string{
-    let toolName = this.gradientGeneratorService.getTooLName();
-    return toolName.value =='text' ? ' bg-clip-text text-transparent' : '';
+    let supClass = this.isActifTool('text') ? ' bg-clip-text text-transparent' : '';
+    return supClass;
   }
   
 }

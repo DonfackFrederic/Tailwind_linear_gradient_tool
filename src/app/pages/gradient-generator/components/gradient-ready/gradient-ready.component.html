@@ -1,0 +1,46 @@
+<section>
+  <article>
+    <!-- ready and random structure -->
+    <div class="container px-4 py-20 mx-auto">
+      <div class="flex flex-col items-center text-center">
+        <h2 class="text-3xl font-bold text-transparent bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 bg-clip-text">Ready to Use</h2>
+        <h2 class="mt-4 text-3xl font-bold text-gray-800">Awesome Gradients Examples</h2>
+        <p class="mt-4 text-gray-500">Choose from our ready-made Tailwind CSS gradients to create beautiful cards, mobile apps, and websites.</p>
+      </div>
+      <div class="grid grid-cols-1 gap-10 mt-12 md:grid-cols-2 xl:grid-cols-3">
+        @for (readyColor of readyColorList; track $index) {
+          <div class="group relative">
+            <div class="w-full h-56 lg:h-60 rounded-xl flex justify-center items-center focus:outline-none">
+              <div
+                [ngClass]="{'hidden': !isActifTool('bg')}"
+                class="relative w-full rounded-xl h-full {{readyColor.class}}">
+              </div>
+              <!-- /bg element -->
+              <!-- text element -->
+              <div
+                [ngClass]="{'hidden': !isActifTool('text')}"
+                class="w-full flex items-center p-6 bg-gray-50 rounded-xl">
+                <h2 class="mx-auto text-2xl font-bold break-words sm:text-3xl md:text-4xl {{readyColor.class}} truncate bg-clip-text text-transparent">Awesome Text</h2>
+              </div>
+            </div>
+            <button (click)="copieClass(readyColor.class+getSupClassForTextTool())" class="hidden group-hover:flex w-auto duration-300 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[100%] transition-all lg:mt-4 xl:mt-0 mt-4 sm:mt-0 bg-gray-900 hover:bg-gray-700 text-white items-center justify-center px-4 py-2.5 space-x-3 font-semibold rounded-md focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0">
+                <path fill-rule="evenodd" d="M17.663 3.118c.225.015.45.032.673.05C19.876 3.298 21 4.604 21 6.109v9.642a3 3 0 01-3 3V16.5c0-5.922-4.576-10.775-10.384-11.217.324-1.132 1.3-2.01 2.548-2.114.224-.019.448-.036.673-.051A3 3 0 0113.5 1.5H15a3 3 0 012.663 1.618zM12 4.5A1.5 1.5 0 0113.5 3H15a1.5 1.5 0 011.5 1.5H12z" clip-rule="evenodd"></path>
+                <path d="M3 8.625c0-1.036.84-1.875 1.875-1.875h.375A3.75 3.75 0 019 10.5v1.875c0 1.036.84 1.875 1.875 1.875h1.875A3.75 3.75 0 0116.5 18v2.625c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625v-12z"></path>
+                <path d="M10.5 10.5a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963 5.23 5.23 0 00-3.434-1.279h-1.875a.375.375 0 01-.375-.375V10.5z"></path>
+              </svg>
+              <span>{{TextForCopyButtun}}</span>
+            </button>
+            <div class="flex items-center justify-between mt-6">
+              <p class="text-lg font-medium text-gray-500">{{readyColor.name}}</p>
+              <div class="flex items-center space-x-3">
+                <p class="text-base font-medium text-gray-500">{{readyColor.from}} - {{readyColor.to}}</p>
+              </div>
+            </div>
+          </div>
+        }
+        
+        </div>
+      </div>
+  </article>
+</section>

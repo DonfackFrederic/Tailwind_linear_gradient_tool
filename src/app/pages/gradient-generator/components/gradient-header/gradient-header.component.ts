@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
-import { toolName, toolNameResponse, toolOption, toolOptionResponse } from '../../../models/gradient-generatotr/gradient-header-config';
 import { NgClass } from '@angular/common';
-import { GradientGenaratorService } from '../../../services/gradient-genarator.service';
+import { toolName, toolNameResponse, toolOption, toolOptionResponse } from '../../models/gradient-header-config';
+import { GradientGenaratorService } from '../../services/gradient-genarator.service';
 
 @Component({
   selector: 'app-gradient-header',

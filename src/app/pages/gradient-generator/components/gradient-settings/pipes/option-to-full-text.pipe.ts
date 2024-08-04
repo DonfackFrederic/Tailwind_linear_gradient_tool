@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { direcrionOption } from '../models/gradient-generatotr/gradient-setting-config';
+import { direcrionOption } from '../../../models/gradient-setting-config';
 
 @Pipe({
   name: 'optionToFullText',
