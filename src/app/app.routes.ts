@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
+import { GradientGeneratorComponent } from './pages/gradient-generator/gradient-generator.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'gradient-generator', pathMatch: 'full' },
   {
     path: 'gradient-generator',
-    loadComponent: () =>
-      import('./pages/gradient-generator/gradient-generator.component').then(
-        (c) => c.GradientGeneratorComponent
-      ),
+    component: GradientGeneratorComponent
   },
+  {
+    path: '**',
+    redirectTo: 'gradient-generator'
+  }
 ];
